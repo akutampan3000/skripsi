@@ -1,0 +1,132 @@
+CRITICAL - 2025-03-06 06:32:22 --> ErrorException: Undefined variable $title
+[Method: GET, Route: admin/gejala]
+in APPPATH\Views\admin\gejala\index.php on line 6.
+ 1 APPPATH\Views\admin\gejala\index.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php', 6)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/gejala/index', [], true)
+ 5 APPPATH\Controllers\AdminQuestionController.php(17): view('admin/gejala/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 06:32:55 --> ErrorException: Undefined variable $title
+[Method: GET, Route: admin/gejala]
+in APPPATH\Views\admin\gejala\index.php on line 5.
+ 1 APPPATH\Views\admin\gejala\index.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/gejala/index', [], true)
+ 5 APPPATH\Controllers\AdminQuestionController.php(17): view('admin/gejala/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 06:32:55 --> ErrorException: Undefined variable $title
+[Method: GET, Route: admin/gejala]
+in APPPATH\Views\admin\gejala\index.php on line 5.
+ 1 APPPATH\Views\admin\gejala\index.php(5): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php', 5)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/gejala/index', [], true)
+ 5 APPPATH\Controllers\AdminQuestionController.php(17): view('admin/gejala/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 06:33:01 --> ErrorException: Undefined variable $title
+[Method: GET, Route: admin/gejala]
+in APPPATH\Views\admin\gejala\index.php on line 49.
+ 1 APPPATH\Views\admin\gejala\index.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php', 49)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/gejala/index', [], true)
+ 5 APPPATH\Controllers\AdminQuestionController.php(17): view('admin/gejala/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 06:33:05 --> ErrorException: Undefined variable $title
+[Method: GET, Route: admin/gejala]
+in APPPATH\Views\admin\gejala\index.php on line 49.
+ 1 APPPATH\Views\admin\gejala\index.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php', 49)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/gejala/index', [], true)
+ 5 APPPATH\Controllers\AdminQuestionController.php(17): view('admin/gejala/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 06:33:06 --> ErrorException: Undefined variable $title
+[Method: GET, Route: admin/gejala]
+in APPPATH\Views\admin\gejala\index.php on line 49.
+ 1 APPPATH\Views\admin\gejala\index.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $title', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php', 49)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\gejala\\index.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/gejala/index', [], true)
+ 5 APPPATH\Controllers\AdminQuestionController.php(17): view('admin/gejala/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 07:16:32 --> CodeIgniter\Database\Exceptions\DataException: Allowed fields must be specified for model: "App\Models\QuestionModel"
+[Method: POST, Route: admin/gejala/update/q3_engine]
+in SYSTEMPATH\BaseModel.php on line 1338.
+ 1 SYSTEMPATH\BaseModel.php(1338): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\QuestionModel')
+ 2 SYSTEMPATH\BaseModel.php(1005): CodeIgniter\BaseModel->doProtectFields([...])
+ 3 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 4 APPPATH\Controllers\AdminQuestionController.php(56): CodeIgniter\Model->update('q3_engine', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->update('q3_engine')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 07:16:32 --> CodeIgniter\Database\Exceptions\DataException: Allowed fields must be specified for model: "App\Models\QuestionModel"
+[Method: POST, Route: admin/gejala/update/q3_engine]
+in SYSTEMPATH\BaseModel.php on line 1338.
+ 1 SYSTEMPATH\BaseModel.php(1338): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\QuestionModel')
+ 2 SYSTEMPATH\BaseModel.php(1005): CodeIgniter\BaseModel->doProtectFields([...])
+ 3 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update([...], [...])
+ 4 APPPATH\Controllers\AdminQuestionController.php(56): CodeIgniter\Model->update('q3_engine', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->update('q3_engine')
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-03-06 07:20:01 --> CodeIgniter\Database\Exceptions\DataException: Allowed fields must be specified for model: "App\Models\QuestionModel"
+[Method: POST, Route: admin/gejala/simpan]
+in SYSTEMPATH\Model.php on line 822.
+ 1 SYSTEMPATH\Model.php(822): CodeIgniter\Database\Exceptions\DataException::forInvalidAllowedFields('App\\Models\\QuestionModel')
+ 2 SYSTEMPATH\BaseModel.php(820): CodeIgniter\Model->doProtectFieldsForInsert([...])
+ 3 SYSTEMPATH\Model.php(800): CodeIgniter\BaseModel->insert([...], true)
+ 4 APPPATH\Controllers\AdminQuestionController.php(36): CodeIgniter\Model->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminQuestionController->store()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminQuestionController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
