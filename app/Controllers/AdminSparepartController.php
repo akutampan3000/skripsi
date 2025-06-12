@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php 
+
+namespace App\Controllers;
 
 use App\Models\SparepartModel;
 
@@ -9,6 +11,8 @@ class AdminSparepartController extends BaseController
     public function __construct()
     {
         $this->sparepartModel = new SparepartModel();
+        // Memuat helper form untuk validasi
+        helper('form');
     }
 
     /**
@@ -20,7 +24,6 @@ class AdminSparepartController extends BaseController
             'title' => 'Kelola Sparepart',
             'spareparts' => $this->sparepartModel->findAll(),
         ];
-
         return view('admin/sparepart/index', $data);
     }
 
@@ -33,7 +36,6 @@ class AdminSparepartController extends BaseController
             'title' => 'Tambah Sparepart',
             'validation' => \Config\Services::validation(),
         ];
-
         return view('admin/sparepart/form', $data);
     }
 
@@ -42,30 +44,28 @@ class AdminSparepartController extends BaseController
      */
     public function store()
     {
-        // Validasi input
+        // Aturan validasi baru sesuai skema DB
         $rules = [
             'id' => 'required|is_unique[spareparts.id]',
-            'name' => 'required',
+            'name' => 'required|max_length[100]',
             'description' => 'required',
             'problem_type' => 'required|in_list[electrical,engine]',
-            'brands' => 'required',
-            'related_symptoms' => 'required',
-            'compatibility_score' => 'required',
+            'category' => 'required|max_length[50]',
+            'performance_level' => 'required|in_list[standard,oem,racing]'
         ];
 
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        // Simpan data
+        // Data baru untuk disimpan
         $this->sparepartModel->save([
             'id' => $this->request->getPost('id'),
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
             'problem_type' => $this->request->getPost('problem_type'),
-            'brands' => json_encode($this->request->getPost('brands')),
-            'related_symptoms' => json_encode($this->request->getPost('related_symptoms')),
-            'compatibility_score' => json_encode($this->request->getPost('compatibility_score')),
+            'category' => $this->request->getPost('category'),
+            'performance_level' => $this->request->getPost('performance_level'),
         ]);
 
         return redirect()->to('/admin/sparepart')->with('success', 'Sparepart berhasil ditambahkan.');
@@ -87,7 +87,6 @@ class AdminSparepartController extends BaseController
             'sparepart' => $sparepart,
             'validation' => \Config\Services::validation(),
         ];
-
         return view('admin/sparepart/form', $data);
     }
 
@@ -96,29 +95,26 @@ class AdminSparepartController extends BaseController
      */
     public function update($id)
     {
-        // Validasi input
+        // Aturan validasi baru (tanpa 'id' karena tidak diubah)
         $rules = [
-            'name' => 'required',
+            'name' => 'required|max_length[100]',
             'description' => 'required',
             'problem_type' => 'required|in_list[electrical,engine]',
-            'brands' => 'required',
-            'related_symptoms' => 'required',
-            'compatibility_score' => 'required',
+            'category' => 'required|max_length[50]',
+            'performance_level' => 'required|in_list[standard,oem,racing]'
         ];
 
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        // Update data
-        $this->sparepartModel->save([
-            'id' => $id,
+        // Data baru untuk di-update
+        $this->sparepartModel->update($id, [
             'name' => $this->request->getPost('name'),
             'description' => $this->request->getPost('description'),
             'problem_type' => $this->request->getPost('problem_type'),
-            'brands' => json_encode($this->request->getPost('brands')),
-            'related_symptoms' => json_encode($this->request->getPost('related_symptoms')),
-            'compatibility_score' => json_encode($this->request->getPost('compatibility_score')),
+            'category' => $this->request->getPost('category'),
+            'performance_level' => $this->request->getPost('performance_level'),
         ]);
 
         return redirect()->to('/admin/sparepart')->with('success', 'Sparepart berhasil diperbarui.');

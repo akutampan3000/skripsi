@@ -17,7 +17,8 @@ $routes->get('/auth/logout', 'Auth::logout');
 // User Dashboard
 $routes->get('/dashboard', 'Auth::dashboard', ['filter' => 'auth']);
 
-// Diagnosa Routes dengan filter auth
+// Diagnosa & User-facing Routes (Riwayat, Daftar Sparepart)
+// Semua rute di sini memerlukan user untuk login
 $routes->group('diagnosa', ['filter' => 'auth'], function($routes) {
     $routes->get('/', 'Diagnosa::index');
     $routes->get('brand', 'Diagnosa::brand');
@@ -28,9 +29,15 @@ $routes->group('diagnosa', ['filter' => 'auth'], function($routes) {
     $routes->post('process-answer', 'Diagnosa::processAnswer');
     $routes->get('result', 'Diagnosa::result');
     $routes->get('reset', 'Diagnosa::reset');
+    
+    // Rute untuk halaman baru (Riwayat & Daftar Sparepart)
+    // URL akan menjadi: /diagnosa/history dan /diagnosa/daftar-sparepart
+    $routes->get('history', 'Diagnosa::history');
+    $routes->get('daftar-sparepart', 'Diagnosa::daftarSparepart');
 });
 
-// Admin Routes dengan filter admin
+// Admin Routes
+// Semua rute di sini memerlukan user untuk login sebagai admin
 $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('dashboard', 'AdminController::dashboard');
     
@@ -52,7 +59,3 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
         $routes->get('hapus/(:segment)', 'AdminSparepartController::delete/$1');
     });
 });
-
-// Filter untuk routes lainnya
-$routes->get('sparepart', 'Sparepart::index', ['filter' => 'auth']);
-$routes->get('history', 'History::index', ['filter' => 'auth']);

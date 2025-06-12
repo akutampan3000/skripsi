@@ -1,0 +1,104 @@
+CRITICAL - 2025-06-11 09:51:31 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/daftar-sparepart]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:51:31 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/daftar-sparepart]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:44 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/daftar-sparepart]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:45 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:46 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/daftar-sparepart]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:47 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/history]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:48 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:48 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/history]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:49 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:49 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/brand]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:49 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/history]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:49 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:50 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:50 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:50 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/history]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:50 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/history]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:50 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/daftar-sparepart]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:51 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: diagnosa/result]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:54:56 --> ErrorException: Cannot redeclare App\Libraries\DiagnosisLib::getHistoryForUser()
+[Method: GET, Route: dashboard]
+in APPPATH\Libraries\DiagnosisLib.php on line 191.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-06-11 09:56:46 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "dashboard.php"
+[Method: GET, Route: dashboard]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(212): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('dashboard.php')
+ 2 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('dashboard', [], true)
+ 3 APPPATH\Controllers\Auth.php(105): view('dashboard', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->dashboard()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')
+CRITICAL - 2025-06-11 10:34:43 --> ErrorException: Undefined array key "brands"
+[Method: GET, Route: admin/sparepart/edit/sp_kel_02]
+in APPPATH\Views\admin\sparepart\form.php on line 77.
+ 1 APPPATH\Views\admin\sparepart\form.php(77): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "brands"', 'C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\sparepart\\form.php', 77)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\laragon\\www\\spsparepart\\app\\Views\\admin\\sparepart\\form.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/sparepart/form', [], true)
+ 5 APPPATH\Controllers\AdminSparepartController.php(91): view('admin/sparepart/form', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminSparepartController->edit('sp_kel_02')
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminSparepartController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\laragon\\www\\spsparepart\\public\\index.php')

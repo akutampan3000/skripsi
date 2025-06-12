@@ -1,13 +1,25 @@
-<?php namespace App\Libraries;
+<?php
+
+namespace App\Libraries;
+
+// Import model yang akan kita gunakan
+use App\Models\SparepartModel;
 
 class DiagnosisLib
 {
     protected $db;
+    protected $sparepartModel; // Properti untuk menampung SparepartModel
 
     public function __construct()
     {
         $this->db = \Config\Database::connect();
+        // Buat instance dari SparepartModel untuk digunakan di seluruh library
+        $this->sparepartModel = new SparepartModel(); 
     }
+
+    //================================================
+    // Metode untuk data dasar
+    //================================================
 
     public function getMotorcycleBrands()
     {
@@ -26,115 +38,147 @@ class DiagnosisLib
             'engine' => 'Mesin'
         ];
     }
+    
+    public function getBrandName($brandId)
+    {
+        return $this->getMotorcycleBrands()[$brandId] ?? 'Unknown Brand';
+    }
+
+    //================================================
+    // Metode untuk alur diagnosa (Forward Chaining)
+    //================================================
 
     public function getFirstQuestion($problemType)
     {
         $builder = $this->db->table('questions');
-        return $builder->select('id')
-            ->where('problem_type', $problemType)
-            ->where('is_initial', 1)
-            ->get()
-            ->getRow('id');
-    }
-
-    public function getQuestion($problemType, $questionId)
-{
-    $builder = $this->db->table('questions');
-    $result = $builder->where('problem_type', $problemType)
-                    ->where('id', $questionId)
-                    ->get()
-                    ->getRowArray();
-
-    // Validasi struktur data
-    if($result && isset($result['question_text'])) {
-        return [
-            'id' => $result['id'],
-            'question_text' => $result['question_text'],
-            'next_if_yes' => $result['next_if_yes'],
-            'next_if_no' => $result['next_if_no']
-        ];
+        $row = $builder->select('id')->where('problem_type', $problemType)->where('is_initial', 1)->get()->getRow();
+        return $row ? $row->id : null;
     }
     
-    return null;
-}
-
+    public function getQuestion($problemType, $questionId)
+    {
+        return $this->db->table('questions')
+            ->where('problem_type', $problemType)
+            ->where('id', $questionId)
+            ->get()->getRowArray();
+    }
+    
     public function getNextStep($problemType, $currentQuestionId, $answer)
     {
-        // Forward Chaining: Get next question
         $question = $this->getQuestion($problemType, $currentQuestionId);
-        $nextStep = $answer === 'yes' ? $question['next_if_yes'] : $question['next_if_no'];
-        
-        // Simpan riwayat untuk Content-Based Filtering
-        $this->saveDiagnosticHistory([
-            'question_id' => $currentQuestionId,
-            'answer' => $answer,
-            'timestamp' => date('Y-m-d H:i:s')
-        ]);
-        
-        return $nextStep;
+        return $question ? (($answer === 'yes') ? $question['next_if_yes'] : $question['next_if_no']) : null;
     }
 
-    public function getRecommendation($finalConclusion, $brand)
-{
-    $sparepart = $this->getSparepartById($finalConclusion);
-    
-    if(!$sparepart) {
-        return null;
-    }
-    
-    // Format data brands
-    $brands = json_decode($sparepart['brands'], true);
-    
-    return [
-        'part' => [
-            'name' => $sparepart['name'],
-            'description' => $sparepart['description']
-        ],
-        'brand_options' => $brands[$brand] ?? [],
-        'compatibility_score' => json_decode($sparepart['compatibility_score'], true)[$brand] ?? 0
-    ];
-}
-
-    private function saveDiagnosticHistory($log)
-    {
-        $history = session()->get('diagnosa_history') ?? [];
-        $history[] = $log;
-        session()->set('diagnosa_history', $history);
-    }
-
-    private function getDiagnosticHistory()
-    {
-        return session()->get('diagnosa_history') ?? [];
-    }
-
-    private function calculateCbfScore($sparepart, $history)
-    {
-        $score = 0;
-        $symptoms = json_decode($sparepart['related_symptoms'], true);
-        
-        foreach($history as $entry) {
-            if(in_array($entry['question_id'].':'.$entry['answer'], $symptoms)) {
-                $score += 10; // Bobot gejala terpenuhi
-            }
-        }
-        
-        // Tambahkan skar berdasarkan preferensi merek
-        $score += $sparepart['compatibility_score'][session()->get('diagnosa_brand')] ?? 0;
-        
-        return $score;
-    }
+    //================================================
+    // Metode untuk Sparepart, Riwayat, dan Statistik
+    //================================================
 
     public function getSparepartById($id)
     {
-        $builder = $this->db->table('spareparts');
-        return $builder->where('id', $id)
-            ->get()
-            ->getRowArray();
+        return $this->sparepartModel->find($id);
     }
 
-    public function getBrandName($brandId)
+    /**
+     * Mengambil semua spare part, dengan fungsionalitas pencarian.
+     */
+    public function getAllSpareparts($searchQuery = null)
     {
-        $brands = $this->getMotorcycleBrands();
-        return $brands[$brandId] ?? 'Unknown Brand';
+        // Jika ada query pencarian, filter hasilnya
+        if ($searchQuery) {
+            return $this->sparepartModel
+                ->like('name', $searchQuery)
+                ->orLike('description', $searchQuery)
+                ->findAll();
+        }
+        
+        // Jika tidak ada, kembalikan semua
+        return $this->sparepartModel->findAll();
+    }
+
+    public function saveDiagnosticHistory($userId, $sparepartId)
+    {
+        $this->db->table('diagnostic_history')->insert([
+            'user_id' => $userId,
+            'result_sparepart_id' => $sparepartId
+        ]);
+    }
+
+    public function getHistoryForUser($userId, $limit = null)
+    {
+        $builder = $this->db->table('diagnostic_history');
+        $builder->select('diagnostic_history.*, spareparts.name as sparepart_name, spareparts.problem_type')
+            ->join('spareparts', 'spareparts.id = diagnostic_history.result_sparepart_id')
+            ->where('diagnostic_history.user_id', $userId)
+            ->orderBy('diagnosed_at', 'DESC');
+        
+        if ($limit) {
+            $builder->limit($limit);
+        }
+            
+        return $builder->get()->getResultArray();
+    }
+    
+    public function getDashboardStats($userId)
+    {
+        $totalDiagnoses = $this->db->table('diagnostic_history')->where('user_id', $userId)->countAllResults(false);
+
+        $mostFrequentQuery = $this->db->table('diagnostic_history')
+            ->select('spareparts.problem_type, COUNT(diagnostic_history.history_id) as count')
+            ->join('spareparts', 'spareparts.id = diagnostic_history.result_sparepart_id')
+            ->where('diagnostic_history.user_id', $userId)
+            ->groupBy('spareparts.problem_type')
+            ->orderBy('count', 'DESC')
+            ->limit(1)
+            ->get()->getRow();
+
+        $mostFrequent = $mostFrequentQuery ? ucfirst($mostFrequentQuery->problem_type) : 'N/A';
+        
+        return [
+            'total' => $totalDiagnoses,
+            'most_frequent' => $mostFrequent
+        ];
+    }
+    
+    public function getRecommendation($finalConclusion, $brand)
+    {
+        $sparepart = $this->getSparepartById($finalConclusion);
+        if (!$sparepart) return null;
+        
+        return [
+            'part' => [
+                'name' => $sparepart['name'],
+                'description' => $sparepart['description'],
+            ],
+            'brand_options' => [] 
+        ];
+    }
+    
+    /**
+     * FUNGSI INTI UNTUK CONTENT-BASED FILTERING (CBF)
+     */
+    public function getSimilarParts($sparepartId)
+    {
+        $mainPart = $this->getSparepartById($sparepartId);
+        if (!$mainPart) return [];
+        
+        $mainCategory = $mainPart['category'];
+        $mainPerformance = $mainPart['performance_level'];
+
+        $allOtherParts = $this->sparepartModel->where('id !=', $sparepartId)->findAll();
+        
+        $recommendations = [];
+        foreach ($allOtherParts as $otherPart) {
+            $score = 0;
+            if ($otherPart['category'] === $mainCategory) $score += 2;
+            if ($otherPart['performance_level'] === $mainPerformance) $score += 1;
+            
+            if ($score > 0) {
+                $recommendations[] = ['part' => $otherPart, 'score' => $score];
+            }
+        }
+        
+        usort($recommendations, fn($a, $b) => $b['score'] <=> $a['score']);
+        
+        return array_slice($recommendations, 0, 3);
     }
 }

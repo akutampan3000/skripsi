@@ -1,6 +1,4 @@
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Script for AI Tips -->
+<!-- Script for AI Tips -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const aiBtn = document.getElementById('get-ai-tips-btn');
@@ -10,7 +8,7 @@
                     const resultDiv = document.getElementById('ai-tips-result');
 
                     this.disabled = true;
-                    this.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Menganalisis...';
+                    this.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Menganalisis...';
                     resultDiv.style.display = 'block';
                     resultDiv.innerHTML = 'Meminta saran dari AI...';
 
@@ -21,7 +19,7 @@
                         resultDiv.innerHTML = tips.replace(/\n/g, '<br>');
                     } catch (error) {
                         console.error('Error:', error);
-                        resultDiv.innerHTML = '<p class="text-danger">Gagal mendapatkan saran. Coba lagi nanti.</p>';
+                        resultDiv.innerHTML = '<p class="text-red-500">Gagal mendapatkan saran. Coba lagi nanti.</p>';
                     } finally {
                         this.disabled = false;
                         this.innerHTML = 'Minta Saran Perawatan';

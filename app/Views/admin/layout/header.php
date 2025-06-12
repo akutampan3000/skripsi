@@ -10,11 +10,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7c3aed',
+                        secondary: '#a855f7',
+                        dark: '#1a202c',
+                        light: '#f7fafc'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     
     <!-- Custom CSS for Modern Dashboard -->
     <style>
@@ -54,8 +76,24 @@
             position: fixed;
             left: 0;
             top: 0;
-            transition: margin-left 0.3s;
+            transition: all 0.3s ease;
             z-index: 1000;
+            transform: translateX(0);
+        }
+        
+        /* Mobile Sidebar */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                width: 280px;
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .content-area {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
         }
 
         .sidebar-header {
@@ -110,8 +148,20 @@
         .content-area {
             margin-left: 260px;
             width: calc(100% - 260px);
-            padding: 30px;
-            transition: all 0.3s;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 1024px) {
+            .content-area {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-area {
+                padding: 10px;
+            }
         }
         
         /* --- Top Navbar in Content --- */
@@ -170,9 +220,72 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
         }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1100;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        /* Mobile Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive Top Navbar */
+        @media (max-width: 768px) {
+            .top-navbar {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 20px;
+                padding-top: 60px;
+            }
+            
+            .top-navbar h1 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle d-md-none" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay d-md-none" id="mobileOverlay"></div>
+    
     <div class="main-wrapper">
         <!-- Sidebar -->
         <?= $this->include('admin/layout/sidebar') ?>

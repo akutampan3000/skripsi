@@ -1,6 +1,8 @@
 <?php namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Libraries\DiagnosisLib;
+use App\Models\SparepartModel;
 
 class Auth extends BaseController
 {
@@ -84,12 +86,24 @@ class Auth extends BaseController
 
     public function dashboard()
     {
-        if (!session()->get('logged_in')) {
-            return redirect()->to('/auth/login');
-        }
-        return view('auth/dashboard');
-    }
+        // Inisialisasi library dan model
+        $diagnosisLib = new DiagnosisLib();
+        $sparepartModel = new SparepartModel();
 
+        // Ambil data penting dari session
+        $userId = session()->get('user_id');
+        $username = session()->get('username');
+
+        // Kumpulkan semua data yang dibutuhkan untuk dashboard
+        $data = [
+            'username' => $username,
+            'recent_history' => $diagnosisLib->getHistoryForUser($userId, 3), // Ambil 3 riwayat terbaru
+            'stats' => $diagnosisLib->getDashboardStats($userId), // Ambil statistik
+            'total_spareparts' => $sparepartModel->countAllResults() // Hitung total spare part
+        ];
+
+        return view('auth/dashboard', $data); // Kirim semua data ke view
+    }
     public function logout()
     {
         session()->destroy();

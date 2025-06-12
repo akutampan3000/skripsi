@@ -5,189 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Pakar Sparepart Motor</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS for Modern User View -->
-    <style>
-        :root {
-            --primary-color: #7c3aed;
-            --primary-light: #a855f7;
-            --primary-gradient: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            --background-color: #f0f2f5;
-            --sidebar-bg: #ffffff; /* Sidebar terang untuk user */
-            --text-dark: #2d3748;
-            --text-muted: #718096;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --border-color: #e2e8f0;
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f3e8ff',
+                            100: '#e9d5ff',
+                            500: '#7c3aed',
+                            600: '#6d28d9',
+                            700: '#5b21b6'
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif']
+                    }
+                }
+            }
         }
-
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--background-color);
         }
-
-        .main-wrapper {
-            display: flex;
-            width: 100%;
-        }
-
-        /* --- Sidebar Styling (User) --- */
-        .sidebar {
-            width: 260px;
-            background: var(--sidebar-bg);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            border-right: 1px solid var(--border-color);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar-header {
-            padding: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .sidebar-header .brand-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-        }
-        .sidebar-header h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); margin-top: 10px;}
-
-        .sidebar-nav { list-style: none; padding: 0; margin: 0; }
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 14px 20px;
-            margin-bottom: 8px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: all 0.2s ease-in-out;
-        }
-        .sidebar-nav a:hover {
-            background-color: #f3e8ff; /* Light purple */
-            color: var(--primary-color);
-        }
-        .sidebar-nav a.active {
-            background: var(--primary-gradient);
-            color: white;
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.3);
-        }
-        .sidebar-nav a .icon { font-size: 1.2rem; }
-
-        /* --- Content Area --- */
-        .content-area {
-            margin-left: 260px;
-            width: calc(100% - 260px);
-            padding: 20px;
-        }
-
-        /* --- Top Navbar --- */
-        .top-navbar {
-            background: var(--card-bg);
-            padding: 15px 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-        }
-        .top-navbar .page-title { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
-        .user-profile .dropdown-toggle { color: var(--text-dark); text-decoration: none; font-weight: 600; }
-        .user-profile img { width: 40px; height: 40px; border-radius: 50%; }
-
-        .card {
-            border: none;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-        .card-body { padding: 30px; }
-
-        /* --- Diagnosa Progress Bar --- */
+        /* Custom progress bar styles */
         .diagnosa-progress {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            margin-bottom: 40px;
+            @apply flex justify-between relative mb-10;
         }
         .diagnosa-progress::before {
             content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--border-color);
-            transform: translateY(-50%);
-            z-index: 1;
+            @apply absolute top-1/2 left-0 w-full h-1 bg-gray-200 transform -translate-y-1/2 z-10;
         }
         .progress-bar-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-            transform: translateY(-50%);
-            z-index: 2;
-            transition: width 0.4s ease;
+            @apply absolute top-1/2 left-0 h-1 bg-gradient-to-r from-primary-500 to-primary-600 transform -translate-y-1/2 z-20 transition-all duration-500;
         }
         .progress-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            z-index: 3;
-            width: 120px;
+            @apply flex flex-col items-center text-center z-30 w-28;
         }
         .step-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--border-color);
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            transition: all 0.4s ease;
-            border: 4px solid var(--background-color);
+            @apply w-10 h-10 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center font-bold transition-all duration-300 border-4 border-gray-50;
         }
-        .step-label { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); margin-top: 10px; }
-
+        .step-label {
+            @apply text-sm font-semibold text-gray-500 mt-2;
+        }
         .progress-step.active .step-circle {
-            background: var(--primary-gradient);
-            color: white;
-            border-color: #f3e8ff;
+            @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white border-primary-50;
         }
-         .progress-step.active .step-label { color: var(--primary-color); }
+        .progress-step.active .step-label {
+            @apply text-primary-500;
+        }
     </style>
 </head>
-<body>
-    <div class="main-wrapper">
+<body class="bg-gray-50 font-inter min-h-screen">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden hidden"></div>
+    
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn" class="fixed top-4 left-4 z-50 lg:hidden bg-white p-2 rounded-lg shadow-lg">
+        <i class="fas fa-bars text-gray-700"></i>
+    </button>
+    
+    <div class="flex min-h-screen">
         <!-- Sidebar -->
         <?= $this->include('layout/sidebar') ?>
 
         <!-- Content Area -->
-        <main class="content-area">
-             <!-- This header will now be part of each page's content section -->
-            <?= $this->renderSection('content') ?>
+        <main class="flex-1 lg:ml-64 ml-0 transition-all duration-300">
+            <div class="p-4 lg:p-6">
+                <?= $this->renderSection('content') ?>
+            </div>
         </main>
     </div>
     
     <!-- Footer and Scripts -->
     <?= $this->include('layout/footer') ?>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const sidebar = document.querySelector('.sidebar');
+            
+            function toggleMobileMenu() {
+                sidebar.classList.toggle('translate-x-0');
+                sidebar.classList.toggle('-translate-x-full');
+                mobileOverlay.classList.toggle('hidden');
+            }
+            
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            mobileOverlay.addEventListener('click', toggleMobileMenu);
+        });
+    </script>
 </body>
 </html>

@@ -1,7 +1,38 @@
-    <!-- Bootstrap JS -->
+<!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            
+            if (mobileToggle && sidebar && overlay) {
+                mobileToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('show');
+                    overlay.classList.toggle('show');
+                });
+                
+                overlay.addEventListener('click', function() {
+                    sidebar.classList.remove('show');
+                    overlay.classList.remove('show');
+                });
+                
+                // Close sidebar when clicking on sidebar links (mobile)
+                const sidebarLinks = sidebar.querySelectorAll('a');
+                sidebarLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            sidebar.classList.remove('show');
+                            overlay.classList.remove('show');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 
-    <!-- Custom AI Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const generateBtn = document.getElementById('generate-description-btn');
