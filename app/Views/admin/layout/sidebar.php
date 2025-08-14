@@ -27,6 +27,18 @@
                     <span class="font-medium">Kelola Sparepart</span>
                 </a>
             </li>
+            <li>
+                <a href="<?= site_url('admin/riwayat-diagnosa') ?>" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50 group <?= (strpos(uri_string(), 'admin/riwayat-diagnosa') !== false) ? 'bg-primary text-white shadow-lg' : 'text-gray-700 hover:text-primary' ?>">
+                    <i class="fas fa-fw fa-history text-lg <?= (strpos(uri_string(), 'admin/riwayat-diagnosa') !== false) ? 'text-white' : 'text-gray-500 group-hover:text-primary' ?>"></i>
+                    <span class="font-medium">Riwayat Diagnosa</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?= site_url('admin/laporan') ?>" class="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50 group <?= (strpos(uri_string(), 'admin/laporan') !== false) ? 'bg-primary text-white shadow-lg' : 'text-gray-700 hover:text-primary' ?>">
+                    <i class="fas fa-fw fa-chart-bar text-lg <?= (strpos(uri_string(), 'admin/laporan') !== false) ? 'text-white' : 'text-gray-500 group-hover:text-primary' ?>"></i>
+                    <span class="font-medium">Laporan</span>
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="sidebar-footer p-4 border-t border-gray-100">

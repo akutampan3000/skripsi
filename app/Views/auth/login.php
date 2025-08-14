@@ -42,7 +42,7 @@
         /* Right column (welcome message side) */
         .login-right {
             /* The purple gradient background */
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            background: linear-gradient(135deg,rgb(60, 180, 249),rgb(60, 180, 249));
             color: #fff;
             padding: 60px;
             width: 50%;
@@ -134,7 +134,7 @@
         }
 
         .form-control:focus {
-            border-color: #a855f7;
+            border-color:rgb(60, 180, 249);
             box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
             outline: none;
         }
@@ -171,7 +171,7 @@
         
         /* Using the original .btn-login for compatibility */
         .btn-login {
-            background: linear-gradient(90deg, #7c3aed, #a855f7);
+            background: linear-gradient(90deg,rgb(60, 180, 249),rgb(60, 180, 249));
             color: #fff;
             border: none;
             padding: 15px 20px;
@@ -184,7 +184,7 @@
         }
 
         .btn-login:hover {
-             background: linear-gradient(90deg, #6d28d9, #9333ea);
+             background: linear-gradient(90deg,rgb(60, 180, 249),rgb(60, 180, 249));
              transform: translateY(-2px);
              box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
         }
@@ -198,18 +198,52 @@
         }
 
         .signup-link a {
-            color: #7c3aed;
+            color: rgb(60, 180, 249);
             text-decoration: none;
             font-weight: 600;
         }
 
         .signup-link a:hover {
+            color: rgb(50, 160, 229);
             text-decoration: underline;
         }
         
         /* Alert styling for PHP errors */
         .alert {
             width: 100%;
+        }
+
+        /* Password input wrapper styling */
+        .password-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-input-wrapper .form-control {
+            padding-right: 50px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #718096;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .password-toggle:hover {
+            color: #4a5568;
+        }
+
+        .password-toggle:focus {
+            outline: none;
         }
 
         /* Responsive Design */
@@ -239,7 +273,12 @@
     <div class="login-container-wrapper">
         <!-- Left side of the login panel -->
         <div class="login-left">
-            <h2>Hello!</h2>
+            <div class="header-section" style="display: flex; align-items: center; margin-bottom: 10px;">
+                <h2 style="margin: 0; margin-right: 150px;">Hello!</h2>
+                <div class="logo-container">
+                    <img src="<?= base_url('logo.png') ?>" alt="Logo" width="150" height="130" style="border-radius: 12px;">
+                </div>
+            </div>
             <p class="subtitle">Sign in to your account</p>
             
             <!-- PHP error message will be displayed here -->
@@ -253,12 +292,25 @@
             <form action="/auth/authenticate" method="post">
                 <?= csrf_field() ?>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+                    <label for="login_identifier">Username atau Email</label>
+                    <input type="text" class="form-control" id="login_identifier" name="login_identifier" placeholder="Masukkan username atau email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    <div class="password-input-wrapper">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                            <svg class="eye-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                                <path d="m1 1 22 22" stroke="currentColor" stroke-width="2"/>
+                                <path d="m9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19l-6.72-6.72a3 3 0 0 0-4.24-4.24z" stroke="currentColor" stroke-width="2" fill="none"/>
+                                <path d="m1 12s4-8 11-8c1.6 0 3.05.34 4.36.91l-3.17 3.17a3 3 0 0 0-4.24 4.24l-1.48 1.48A18.5 18.5 0 0 1 1 12z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-login">Sign In</button>
@@ -281,5 +333,30 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Password toggle functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = togglePassword.querySelector('.eye-icon');
+            const eyeOffIcon = togglePassword.querySelector('.eye-off-icon');
+
+            togglePassword.addEventListener('click', function() {
+                // Toggle the type attribute
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle the eye icons
+                if (type === 'password') {
+                    eyeIcon.style.display = 'block';
+                    eyeOffIcon.style.display = 'none';
+                } else {
+                    eyeIcon.style.display = 'none';
+                    eyeOffIcon.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

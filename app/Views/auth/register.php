@@ -41,7 +41,7 @@
 
         /* Right column (welcome message side) */
         .register-right {
-            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            background: linear-gradient(135deg, rgb(60, 180, 249), rgb(60, 180, 249));
             color: #fff;
             padding: 60px;
             width: 50%;
@@ -127,14 +127,14 @@
         }
 
         .form-control:focus {
-            border-color: #a855f7;
-            box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+            border-color: rgb(60, 180, 249);
+            box-shadow: 0 0 0 3px rgba(60, 180, 249, 0.2);
             outline: none;
         }
         
         /* Re-styling the original .btn-register to match the login button */
         .btn-register {
-            background: linear-gradient(90deg, #7c3aed, #a855f7);
+            background: linear-gradient(90deg, rgb(60, 180, 249), rgb(60, 180, 249));
             color: #fff;
             border: none;
             padding: 15px 20px;
@@ -148,9 +148,9 @@
         }
 
         .btn-register:hover {
-             background: linear-gradient(90deg, #6d28d9, #9333ea);
+             background: linear-gradient(90deg, rgb(50, 160, 229), rgb(50, 160, 229));
              transform: translateY(-2px);
-             box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+             box-shadow: 0 4px 15px rgba(60, 180, 249, 0.4);
         }
 
         /* Login link at the bottom */
@@ -162,12 +162,13 @@
         }
 
         .login-link a {
-            color: #7c3aed;
+            color: rgb(60, 180, 249);
             text-decoration: none;
             font-weight: 600;
         }
 
         .login-link a:hover {
+            color: rgb(50, 160, 229);
             text-decoration: underline;
         }
         
@@ -226,7 +227,7 @@
                 <?= csrf_field() ?>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="<?= old('username') ?>" placeholder="Choose a username">
+                    <input type="text" class="form-control" id="username" name="username" value="<?= old('username') ?>" placeholder="Buat username anda">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -234,11 +235,11 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Create a password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Buat password anda">
                 </div>
                 <div class="form-group">
                     <label for="confirm_password">Konfirmasi Password</label>
-                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your password">
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Konfirmasi password anda">
                 </div>
                 <button type="submit" class="btn btn-register">Daftar</button>
             </form>
@@ -251,8 +252,8 @@
         <!-- Right side of the register panel -->
         <div class="register-right">
              <div class="register-right-content">
-                <h1>Hello, Friend!</h1>
-                <p>Start your journey with us. Fill in your details and explore a world of new possibilities.</p>
+                <h1>Hello!</h1>
+                <p>Buat akun baru untuk memulai sistem pakar rekomendasi sparepart kendaraan roda dua.</p>
             </div>
         </div>
     </div>

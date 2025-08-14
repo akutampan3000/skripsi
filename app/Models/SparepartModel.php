@@ -5,7 +5,7 @@ use CodeIgniter\Model;
 class SparepartModel extends Model 
 {
     protected $table = 'spareparts';
-    protected $allowedFields = ['name', 'description', 'problem_type', 'brands', 'related_symptoms', 'compatibility_score'];
+    protected $allowedFields = ['name', 'description', 'problem_type', 'category', 'performance_level', 'brands', 'related_symptoms', 'compatibility_score'];
 
     public function getRecommendation($ruleId, $brand, $problemType)
     {

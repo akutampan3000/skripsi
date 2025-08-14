@@ -17,9 +17,7 @@
             </div>
         </main>
     </div>
-    
-    <?= $this->include('admin/layout/footer_content') ?>
-    <?= $this->include('admin/layout/footer') ?>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -17,6 +17,10 @@ $routes->get('/auth/logout', 'Auth::logout');
 // User Dashboard
 $routes->get('/dashboard', 'Auth::dashboard', ['filter' => 'auth']);
 
+// Profile Routes
+$routes->get('/auth/profile', 'Auth::profile', ['filter' => 'auth']);
+$routes->post('/auth/updateProfile', 'Auth::updateProfile', ['filter' => 'auth']);
+
 // Diagnosa & User-facing Routes (Riwayat, Daftar Sparepart)
 // Semua rute di sini memerlukan user untuk login
 $routes->group('diagnosa', ['filter' => 'auth'], function($routes) {
@@ -40,6 +44,10 @@ $routes->group('diagnosa', ['filter' => 'auth'], function($routes) {
 // Semua rute di sini memerlukan user untuk login sebagai admin
 $routes->group('admin', ['filter' => 'admin'], function($routes) {
     $routes->get('dashboard', 'AdminController::dashboard');
+    $routes->get('riwayat-diagnosa', 'AdminController::riwayatDiagnosa');
+    $routes->get('laporan', 'ReportController::index');
+    $routes->get('laporan/export-pdf', 'ReportController::exportPDF');
+    $routes->get('laporan/export-excel', 'ReportController::exportExcel');
     
     $routes->group('gejala', function($routes) {
         $routes->get('/', 'AdminQuestionController::index');
@@ -55,6 +63,7 @@ $routes->group('admin', ['filter' => 'admin'], function($routes) {
         $routes->get('tambah', 'AdminSparepartController::create');
         $routes->post('simpan', 'AdminSparepartController::store');
         $routes->get('edit/(:segment)', 'AdminSparepartController::edit/$1');
+        $routes->post('update/(:segment)', 'AdminSparepartController::update/$1');
         $routes->post('update/(:segment)', 'AdminSparepartController::update/$1');
         $routes->get('hapus/(:segment)', 'AdminSparepartController::delete/$1');
     });
